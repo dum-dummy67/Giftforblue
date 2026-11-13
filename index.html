@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0e0a3d">
+    <title>A Little Something For You</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ENTRY PUZZLE -->
+    <div id="entryPage">
+
+        <div class="entry-card">
+
+            <div class="heart">♡</div>
+
+            <p class="eyebrow">Only for my special girl</p>
+
+            <h1>A little surprise<br>for you</h1>
+
+            <p class="birthday">
+                Happy Birthday 🎂❤️
+            </p>
+
+            <p class="intro">
+                Don't judge me if it's bad...<br>
+                it's my first time creating a website 🥹
+            </p>
+
+            <p class="made">
+                But I made it just for you.
+            </p>
+
+            <div class="divider"></div>
+
+            <h2>Solve these 5 puzzles to enter 🔐</h2>
+
+            <div id="puzzle">
+
+                <p id="questionNumber">Puzzle 1 of 5</p>
+
+                <p id="question"></p>
+
+                <div id="answerBoxes"></div>
+
+                <button id="submitButton">Enter</button>
+
+                <p id="message"></p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ACTUAL WEBSITE -->
+    <div id="mainWebsite">
+
+        <section class="welcome">
+
+            <p class="eyebrow">You made it ♡</p>
+
+            <h1>Happy Birthday,<br>beautiful.</h1>
+
+            <p>
+                I made this little place just for you.
+            </p>
+
+            <div class="scroll-hint">
+                <span>Keep scrolling</span>
+                <span class="scroll-arrow">↓</span>
+            </div>
+
+        </section>
+
+        <!-- NEW: BIRTHDAY MESSAGE -->
+        <section class="birthday-message-section" id="birthdayMessageSection">
+
+            <div class="birthday-emojis">💖🐒🐵💖💩</div>
+
+            <h2>Happy Birthday My Love</h2>
+
+            <button id="clickButton">CLICK!!</button>
+
+        </section>
+
+        <!-- NEW: BALLOONS -->
+        <section class="balloon-section" id="balloonSection">
+
+            <p class="eyebrow">One by one...</p>
+
+            <h2>Pop the balloons 🎈</h2>
+
+            <div class="balloons" id="balloons">
+
+                <button class="balloon balloon-1" data-index="0" aria-label="Pop balloon 1">
+                    <span>🎈</span>
+                </button>
+
+                <button class="balloon balloon-2" data-index="1" aria-label="Pop balloon 2">
+                    <span>🎈</span>
+                </button>
+
+                <button class="balloon balloon-3" data-index="2" aria-label="Pop balloon 3">
+                    <span>🎈</span>
+                </button>
+
+                <button class="balloon balloon-4" data-index="3" aria-label="Pop balloon 4">
+                    <span>🎈</span>
+                </button>
+
+                <button class="balloon balloon-5" data-index="4" aria-label="Pop balloon 5">
+                    <span>🎈</span>
+                </button>
+
+            </div>
+
+            <p id="balloonMessage" class="balloon-message"></p>
+
+            <div class="scroll-hint balloon-scroll-hint" id="balloonScrollHint">
+                <span>Keep scrolling</span>
+                <span class="scroll-arrow">↓</span>
+            </div>
+
+            <p id="balloonNextText" class="next-text">click here</p>
+
+        </section>
+
+        <!-- NEW: STAR WISH + CAKE -->
+        <section class="star-wish-section" id="starWishSection">
+
+            <p class="eyebrow">One more thing</p>
+
+            <h2>Ask the wish to our star<br>before blowing the candles</h2>
+
+            <p class="star-instruction">
+                Click on that bright star and write a wish
+            </p>
+
+            <div class="scene-wrapper">
+
+                <img src="son.png" alt="A silhouette watching the moon from a mountain top" class="scene-image">
+
+                <button class="star-hotspot" id="starHotspot" aria-label="Click the bright star to make a wish"></button>
+
+            </div>
+
+            <div class="wish-smile" id="wishSmile">😊</div>
+
+            <div class="cake-block" id="cakeBlock">
+
+                <div class="cake">
+
+                    <div class="candles" id="candles">
+
+                        <div class="candle"><span class="flame"></span></div>
+                        <div class="candle"><span class="flame"></span></div>
+                        <div class="candle"><span class="flame"></span></div>
+                        <div class="candle"><span class="flame"></span></div>
+                        <div class="candle"><span class="flame"></span></div>
+
+                    </div>
+
+                    <div class="cake-top"></div>
+
+                    <div class="cake-tier-1"></div>
+
+                    <div class="cake-tier-2"></div>
+
+                </div>
+
+                <button id="lightCandlesButton">Light the candles</button>
+
+                <p id="listeningIndicator" class="listening-indicator">
+                    <span class="listening-dot"></span> Blow into your mic...
+                </p>
+
+                <button id="micFallbackButton" class="mic-fallback">
+                    Mic not working? Tap to blow instead
+                </button>
+
+                <p id="wishMessage" class="wish-message"></p>
+
+                <button id="starNextButton" class="next-button">NEXT</button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- Fixed overlay for the "star comes to your screen" wish moment -->
+    <div class="star-overlay" id="starOverlay">
+
+        <div class="big-star" id="bigStar">
+
+            <div class="big-star-shape"></div>
+
+            <div class="wish-input-wrapper" id="wishInputWrapper">
+
+                <textarea id="wishInput" class="wish-input" placeholder="Write your wish..." maxlength="200"></textarea>
+
+                <p class="wish-hint">Press Enter to send it ✨</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Shared drawing defs for the gifts (gradients, patterns, the red heart tape) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <defs>
+            <linearGradient id="tapeRed" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ff5a6e" />
+                <stop offset="1" stop-color="#c4102f" />
+            </linearGradient>
+            <linearGradient id="tapeStrip" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#cf1730" />
+                <stop offset="0.5" stop-color="#ff4a5e" />
+                <stop offset="1" stop-color="#c4102f" />
+            </linearGradient>
+            <radialGradient id="glowGold">
+                <stop offset="0" stop-color="#ffe9a8" stop-opacity="0.85" />
+                <stop offset="1" stop-color="#ffe9a8" stop-opacity="0" />
+            </radialGradient>
+
+            <linearGradient id="g1Body" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f9bccb" />
+                <stop offset="1" stop-color="#e8809c" />
+            </linearGradient>
+            <pattern id="dotPat" width="14" height="14" patternUnits="userSpaceOnUse">
+                <circle cx="4" cy="4" r="2" fill="#fff" fill-opacity="0.55" />
+                <circle cx="11" cy="11" r="2" fill="#fff" fill-opacity="0.55" />
+            </pattern>
+
+            <linearGradient id="g2Body" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#141c5e" />
+                <stop offset="0.5" stop-color="#2a3694" />
+                <stop offset="1" stop-color="#101650" />
+            </linearGradient>
+            <linearGradient id="g2Lid" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#26308a" />
+                <stop offset="0.5" stop-color="#4656c4" />
+                <stop offset="1" stop-color="#222b7c" />
+            </linearGradient>
+            <path id="spark4" d="M0 -4.5 L1.3 -1.3 L4.5 0 L1.3 1.3 L0 4.5 L-1.3 1.3 L-4.5 0 L-1.3 -1.3 Z" />
+
+            <linearGradient id="g3Body" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#cdbfff" />
+                <stop offset="1" stop-color="#8c76e0" />
+            </linearGradient>
+            <pattern id="stripePat" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+                <rect width="5" height="12" fill="#fff" fill-opacity="0.22" />
+            </pattern>
+
+            <!-- the red heart-shaped tape, centered on (0,0) -->
+            <g id="heartTapeG">
+                <path d="M0 12 C-18 -2 -14 -16 -6 -16 C-2 -16 0 -12 0 -10 C0 -12 2 -16 6 -16 C14 -16 18 -2 0 12 Z"
+                    fill="#000" fill-opacity="0.3" transform="translate(1.2 2.2)" />
+                <path d="M0 12 C-18 -2 -14 -16 -6 -16 C-2 -16 0 -12 0 -10 C0 -12 2 -16 6 -16 C14 -16 18 -2 0 12 Z"
+                    fill="url(#tapeRed)" stroke="#a30e28" stroke-width="0.8" stroke-linejoin="round" />
+                <path d="M-10 -8 C-10.5 -12 -7 -13.5 -5 -12.5" fill="none" stroke="#fff" stroke-opacity="0.75"
+                    stroke-width="1.6" stroke-linecap="round" />
+                <path d="M-5 7 L7 -5" stroke="#fff" stroke-opacity="0.14" stroke-width="3" />
+            </g>
+        </defs>
+    </svg>
+
+    <!-- =========================================================
+         GIFTS — shown after the cake page (NEXT button)
+         ========================================================= -->
+    <div id="giftsApp">
+
+        <!-- PAGE 1: choose a gift -->
+        <section class="gift-page" id="giftsPage">
+
+            <p class="eyebrow" id="giftsEyebrow">A little something more</p>
+
+            <h2 id="giftsTitle">Here are 3 gifts for you</h2>
+
+            <p class="gift-sub" id="giftsSub">Choose any 1</p>
+
+            <div class="gift-row" id="giftRow">
+
+                <!-- GIFT 1: rose box with polka dots -->
+                <button class="gift" data-gift="1" aria-label="Gift 1">
+                    <svg class="gift-svg" viewBox="0 0 120 150" aria-hidden="true">
+                        <ellipse cx="60" cy="141" rx="40" ry="6" fill="#000" fill-opacity="0.4" />
+                        <ellipse class="g-glow" cx="60" cy="76" rx="54" ry="54" fill="url(#glowGold)" />
+                        <rect x="18" y="64" width="84" height="74" rx="5" fill="url(#g1Body)" />
+                        <rect x="18" y="64" width="84" height="74" rx="5" fill="url(#dotPat)" />
+                        <rect x="18" y="64" width="9" height="74" rx="4" fill="#fff" fill-opacity="0.2" />
+                        <rect x="93" y="64" width="9" height="74" rx="4" fill="#000" fill-opacity="0.1" />
+                        <g class="g-tape">
+                            <rect x="52" y="64" width="16" height="74" fill="url(#tapeStrip)" />
+                            <rect x="18" y="96" width="84" height="12" fill="url(#tapeStrip)" fill-opacity="0.9" />
+                        </g>
+                        <g class="g-lid">
+                            <rect x="11" y="44" width="98" height="24" rx="5" fill="#e0718f" />
+                            <rect x="11" y="44" width="98" height="8" rx="4" fill="#fff" fill-opacity="0.28" />
+                            <rect x="52" y="44" width="16" height="24" fill="url(#tapeStrip)" />
+                        </g>
+                        <g transform="translate(60 68)">
+                            <g class="g-heart">
+                                <use href="#heartTapeG" transform="scale(1.5)" />
+                            </g>
+                        </g>
+                    </svg>
+                    <span class="gift-label">Gift 1</span>
+                </button>
+
+                <!-- GIFT 2: round hat-box, midnight blue with gold stars -->
+                <button class="gift" data-gift="2" aria-label="Gift 2">
+                    <svg class="gift-svg" viewBox="0 0 120 150" aria-hidden="true">
+                        <ellipse cx="60" cy="141" rx="42" ry="6" fill="#000" fill-opacity="0.4" />
+                        <ellipse class="g-glow" cx="60" cy="76" rx="54" ry="54" fill="url(#glowGold)" />
+                        <path d="M22 58 L22 124 A38 11 0 0 0 98 124 L98 58 Z" fill="url(#g2Body)" />
+                        <g fill="#f6d36b">
+                            <use href="#spark4" transform="translate(36 74)" />
+                            <use href="#spark4" transform="translate(82 70) scale(0.8)" />
+                            <use href="#spark4" transform="translate(58 78) scale(0.6)" />
+                            <use href="#spark4" transform="translate(32 112) scale(0.9)" />
+                            <use href="#spark4" transform="translate(86 114)" />
+                            <use href="#spark4" transform="translate(60 124) scale(0.7)" />
+                            <use href="#spark4" transform="translate(44 100) scale(0.55)" />
+                            <use href="#spark4" transform="translate(76 106) scale(0.55)" />
+                        </g>
+                        <g class="g-tape">
+                            <path d="M22 86 Q60 100 98 86 L98 102 Q60 116 22 102 Z" fill="url(#tapeStrip)" />
+                        </g>
+                        <g class="g-lid">
+                            <path d="M18 40 L18 58 A42 12 0 0 0 102 58 L102 40 Z" fill="url(#g2Lid)" />
+                            <ellipse cx="60" cy="40" rx="42" ry="12" fill="#5666d4" />
+                            <ellipse cx="60" cy="38" rx="30" ry="6" fill="#fff" fill-opacity="0.16" />
+                        </g>
+                        <g transform="translate(60 94)">
+                            <g class="g-heart">
+                                <use href="#heartTapeG" transform="scale(1.5)" />
+                            </g>
+                        </g>
+                    </svg>
+                    <span class="gift-label">Gift 2</span>
+                </button>
+
+                <!-- GIFT 3: lavender gift bag with stripes -->
+                <button class="gift" data-gift="3" aria-label="Gift 3">
+                    <svg class="gift-svg" viewBox="0 0 120 150" aria-hidden="true">
+                        <ellipse cx="60" cy="141" rx="42" ry="6" fill="#000" fill-opacity="0.4" />
+                        <ellipse class="g-glow" cx="60" cy="76" rx="54" ry="54" fill="url(#glowGold)" />
+                        <path d="M42 56 C42 16 78 16 78 56" fill="none" stroke="#e4dcff" stroke-width="4.5"
+                            stroke-linecap="round" />
+                        <path d="M26 54 L94 54 L104 132 Q60 144 16 132 Z" fill="url(#g3Body)" />
+                        <path d="M26 54 L94 54 L104 132 Q60 144 16 132 Z" fill="url(#stripePat)" />
+                        <path d="M26 54 L26 54 L16 132 Q22 134 28 135 L34 54 Z" fill="#fff" fill-opacity="0.14" />
+                        <g class="g-tape">
+                            <path d="M53 54 L67 54 L67 139 Q60 140 53 139 Z" fill="url(#tapeStrip)" />
+                        </g>
+                        <g class="g-lid">
+                            <rect x="23" y="46" width="74" height="15" rx="3" fill="#8f7be0" />
+                            <rect x="23" y="46" width="74" height="5" rx="2.5" fill="#fff" fill-opacity="0.3" />
+                            <rect x="53" y="46" width="14" height="15" fill="url(#tapeStrip)" />
+                        </g>
+                        <g transform="translate(60 90)">
+                            <g class="g-heart">
+                                <use href="#heartTapeG" transform="scale(1.55)" />
+                            </g>
+                        </g>
+                    </svg>
+                    <span class="gift-label">Gift 3</span>
+                </button>
+
+            </div>
+
+            <p class="gift-toast" id="giftToast"></p>
+
+            <!-- appears once all 3 gifts have been opened -->
+            <div class="next-wrap" id="giftsNextWrap">
+                <button class="down-arrow show" id="giftsNext" aria-label="Next">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <path d="M5 9l7 7 7-7" />
+                    </svg>
+                </button>
+                <span class="next-label">Next</span>
+            </div>
+
+        </section>
+
+        <!-- PAGE 2: gift 1 -> three coupons -->
+        <section class="gift-page" id="couponPage">
+
+            <p class="eyebrow">Gift 1</p>
+
+            <h2>Congrats, you got<br>3 coupons 🎟️</h2>
+
+            <p class="gift-sub">Tap each one to open it</p>
+
+            <div class="coupons">
+
+                <button class="coupon" data-coupon="1" aria-label="Coupon 1, tap to open">
+                    <span class="coupon-body">
+                        <span class="coupon-stub"><small>Coupon</small><b>1</b></span>
+                        <span class="coupon-main">
+                            <span class="coupon-text">Going on many dates until we die</span>
+                            <span class="coupon-valid">Valid forever ♡</span>
+                        </span>
+                    </span>
+                    <span class="coupon-cover">
+                        <span class="cover-label">Coupon 1</span>
+                        <span class="cover-tape"></span>
+                        <svg class="cover-heart" viewBox="-20 -20 40 40" aria-hidden="true"><use href="#heartTapeG" /></svg>
+                        <span class="cover-hint">Tap to open</span>
+                    </span>
+                </button>
+
+                <button class="coupon" data-coupon="2" aria-label="Coupon 2, tap to open">
+                    <span class="coupon-body">
+                        <span class="coupon-stub"><small>Coupon</small><b>2</b></span>
+                        <span class="coupon-main">
+                            <span class="coupon-text">Travel with me and build dreams with me</span>
+                            <span class="coupon-valid">Valid forever ♡</span>
+                        </span>
+                    </span>
+                    <span class="coupon-cover">
+                        <span class="cover-label">Coupon 2</span>
+                        <span class="cover-tape"></span>
+                        <svg class="cover-heart" viewBox="-20 -20 40 40" aria-hidden="true"><use href="#heartTapeG" /></svg>
+                        <span class="cover-hint">Tap to open</span>
+                    </span>
+                </button>
+
+                <button class="coupon" data-coupon="3" aria-label="Coupon 3, tap to open">
+                    <span class="coupon-body">
+                        <span class="coupon-stub"><small>Coupon</small><b>3</b></span>
+                        <span class="coupon-main">
+                            <span class="coupon-text">My heart</span>
+                            <span class="coupon-valid">Valid forever ♡</span>
+                        </span>
+                    </span>
+                    <span class="coupon-cover">
+                        <span class="cover-label">Coupon 3</span>
+                        <span class="cover-tape"></span>
+                        <svg class="cover-heart" viewBox="-20 -20 40 40" aria-hidden="true"><use href="#heartTapeG" /></svg>
+                        <span class="cover-hint">Tap to open</span>
+                    </span>
+                </button>
+
+            </div>
+
+            <button class="down-arrow" id="couponDown" aria-label="Next">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 9l7 7 7-7" />
+                </svg>
+            </button>
+
+        </section>
+
+        <!-- PAGE 3: gift 2 -> fireworks night -->
+        <section class="gift-page fw-page" id="fireworksPage">
+
+            <div class="fw-scene" id="fwScene">
+
+                <svg id="fwSvg" viewBox="0 0 400 500"
+                    aria-label="Two silhouettes sitting together at a huge house in the mountains, watching fireworks over a city">
+                    <defs>
+                        <linearGradient id="fwSky" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#05031f" />
+                            <stop offset="0.38" stop-color="#140b4b" />
+                            <stop offset="0.62" stop-color="#3a1a70" />
+                            <stop offset="0.7" stop-color="#7a2f7e" />
+                        </linearGradient>
+                        <radialGradient id="fwMoonHalo">
+                            <stop offset="0" stop-color="#fff6cf" stop-opacity="0.5" />
+                            <stop offset="1" stop-color="#fff6cf" stop-opacity="0" />
+                        </radialGradient>
+                        <linearGradient id="fwMtnBack" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#3b3092" />
+                            <stop offset="1" stop-color="#1c1558" />
+                        </linearGradient>
+                        <linearGradient id="fwMtnMid" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#1f1766" />
+                            <stop offset="1" stop-color="#0e0a3d" />
+                        </linearGradient>
+                        <radialGradient id="fwCityGlow">
+                            <stop offset="0" stop-color="#ff9a5a" stop-opacity="0.6" />
+                            <stop offset="1" stop-color="#ff9a5a" stop-opacity="0" />
+                        </radialGradient>
+                        <linearGradient id="fwGlass" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#ffe9ae" />
+                            <stop offset="0.55" stop-color="#ffc468" />
+                            <stop offset="1" stop-color="#ff9a4d" />
+                        </linearGradient>
+                        <radialGradient id="fwHouseGlow">
+                            <stop offset="0" stop-color="#ffaa5a" stop-opacity="0.5" />
+                            <stop offset="1" stop-color="#ffaa5a" stop-opacity="0" />
+                        </radialGradient>
+                        <linearGradient id="fwSpill" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#ffaa5a" stop-opacity="0.4" />
+                            <stop offset="1" stop-color="#ffaa5a" stop-opacity="0" />
+                        </linearGradient>
+                    </defs>
+
+                    <rect width="400" height="500" fill="url(#fwSky)" />
+                    <g id="fwStars"></g>
+
+                    <circle cx="326" cy="64" r="62" fill="url(#fwMoonHalo)" />
+                    <circle cx="326" cy="64" r="24" fill="#fdf6dc" />
+                    <ellipse cx="318" cy="58" rx="5" ry="4" fill="#e9dfb8" opacity="0.7" />
+                    <ellipse cx="334" cy="70" rx="6" ry="4.5" fill="#e9dfb8" opacity="0.6" />
+                    <ellipse cx="330" cy="52" rx="3" ry="2.5" fill="#e9dfb8" opacity="0.6" />
+
+                    <path d="M0 340 L0 250 L36 226 L62 246 L104 204 L138 238 L172 220 L214 252 L256 208 L292 240 L330 214 L368 240 L400 224 L400 340 Z"
+                        fill="url(#fwMtnBack)" />
+                    <g fill="#c4c0ff" fill-opacity="0.5">
+                        <path d="M104 204 L93 220 L99 217 L104 224 L110 217 L116 221 Z" />
+                        <path d="M256 208 L245 224 L251 221 L256 228 L262 221 L268 225 Z" />
+                        <path d="M330 214 L321 226 L326 224 L330 230 L335 224 L340 227 Z" />
+                        <path d="M36 226 L29 236 L33 234 L36 239 L40 234 L44 237 Z" />
+                    </g>
+                    <path d="M0 340 L0 282 L48 256 L92 284 L132 262 L176 290 L224 270 L270 296 L318 266 L362 290 L400 272 L400 340 Z"
+                        fill="url(#fwMtnMid)" />
+
+                    <ellipse cx="322" cy="332" rx="110" ry="42" fill="url(#fwCityGlow)" />
+                    <g id="fwCity"></g>
+                    <ellipse cx="200" cy="340" rx="270" ry="14" fill="#a89be8" opacity="0.1" />
+                    <g id="fwPinesFar" fill="#0a0733"></g>
+
+                    <path d="M0 346 Q100 334 200 340 Q300 334 400 346 L400 500 L0 500 Z" fill="#06041c" />
+
+                    <ellipse cx="220" cy="396" rx="170" ry="100" fill="url(#fwHouseGlow)" />
+
+                    <rect x="350" y="366" width="9" height="22" fill="#06041a" />
+                    <rect x="58" y="376" width="72" height="64" fill="#06041a" />
+                    <rect x="50" y="370" width="88" height="8" fill="#02010c" />
+                    <rect x="70" y="342" width="48" height="30" fill="#06041a" />
+                    <rect x="64" y="336" width="60" height="7" fill="#02010c" />
+                    <g fill="#ffc46b">
+                        <rect x="76" y="350" width="10" height="14" />
+                        <rect x="92" y="350" width="10" height="14" fill="#e9a04c" />
+                        <rect x="108" y="350" width="8" height="14" />
+                        <rect x="64" y="388" width="12" height="22" />
+                        <rect x="82" y="388" width="12" height="22" fill="#e9a04c" />
+                        <rect x="100" y="388" width="12" height="22" />
+                    </g>
+                    <rect x="310" y="388" width="58" height="52" fill="#06041a" />
+                    <rect x="302" y="382" width="74" height="7" fill="#02010c" />
+                    <g fill="#ffc46b">
+                        <rect x="316" y="400" width="10" height="20" />
+                        <rect x="334" y="400" width="10" height="20" fill="#e9a04c" />
+                        <rect x="352" y="400" width="10" height="20" />
+                    </g>
+
+                    <polygon points="128,440 128,366 220,296 312,366 312,440" fill="url(#fwGlass)" />
+                    <g stroke="#1a0c12" stroke-width="2.4" stroke-opacity="0.85" fill="none">
+                        <path d="M159 342 V440 M190 319 V440 M220 296 V440 M250 319 V440 M281 342 V440" />
+                        <path d="M128 366 H312 M128 404 H312" />
+                    </g>
+                    <path d="M118 372 L220 286 L322 372" fill="none" stroke="#03020f" stroke-width="8"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M121 369 L220 289 L319 369" fill="none" stroke="#ffd596" stroke-opacity="0.35"
+                        stroke-width="1" />
+                    <circle cx="220" cy="324" r="13" fill="#fff4c4" fill-opacity="0.5" />
+                    <circle cx="220" cy="324" r="3.4" fill="#fffbe6" />
+
+                    <polygon points="128,440 312,440 352,496 88,496" fill="url(#fwSpill)" />
+                    <rect x="36" y="440" width="328" height="12" fill="#0a0620" />
+                    <rect x="36" y="440" width="328" height="1.5" fill="#ffb35c" fill-opacity="0.35" />
+                    <rect x="124" y="452" width="152" height="6" fill="#0d0827" />
+                    <rect x="114" y="458" width="172" height="6" fill="#0f0a2c" />
+                    <g id="fwRail" fill="#04030f">
+                        <rect x="40" y="424" width="86" height="2.5" />
+                        <rect x="316" y="424" width="46" height="2.5" />
+                    </g>
+
+                    <g id="fwPinesNear" fill="#03020f"></g>
+
+                    <g id="fwCouple" transform="translate(200 414) scale(1.15) translate(-200 -414)">
+                        <rect x="146" y="414" width="108" height="8" rx="2" fill="#000" />
+                        <rect x="152" y="421" width="4" height="19" fill="#000" />
+                        <rect x="244" y="421" width="4" height="19" fill="#000" />
+
+                        <g id="fwGirl">
+                            <rect x="160" y="416" width="12" height="24" fill="#000" />
+                            <rect x="186" y="416" width="12" height="24" fill="#000" />
+                            <path d="M156 418 L158 392 Q160 382 172 380 L188 380 Q200 382 202 392 L204 418 Z" fill="#000" />
+                            <path id="fwGirlArm" d="M192 398 Q216 408 242 399" fill="none" stroke="#000" stroke-width="10"
+                                stroke-linecap="round" />
+                            <g id="fwGirlHead">
+                                <rect x="176" y="372" width="8" height="12" fill="#000" />
+                                <ellipse cx="180" cy="364" rx="11" ry="12.5" fill="#000" />
+                                <path d="M167 364 Q164 344 180 343 Q196 344 193 364 Q198 380 197 394 L163 394 Q162 380 167 364 Z" fill="#000" />
+                            </g>
+                        </g>
+
+                        <g id="fwBoy">
+                            <rect x="202" y="416" width="14" height="24" fill="#000" />
+                            <rect x="236" y="416" width="14" height="24" fill="#000" />
+                            <path d="M196 418 L198 390 Q200 377 214 375 L236 375 Q250 377 252 390 L254 418 Z" fill="#000" />
+                            <path id="fwBoyArm" d="M208 394 Q186 386 158 397" fill="none" stroke="#000" stroke-width="11"
+                                stroke-linecap="round" />
+                            <g id="fwBoyHead">
+                                <rect x="219" y="364" width="10" height="14" fill="#000" />
+                                <ellipse cx="224" cy="355" rx="12.5" ry="14" fill="#000" />
+                                <path d="M211 353 Q211 338 224 338 Q237 338 237 353 Q232 346 224 346 Q216 346 211 353 Z" fill="#000" />
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+
+                <canvas id="fwCanvas"></canvas>
+
+                <div class="fw-hearts" id="fwHearts"></div>
+
+            </div>
+
+            <p class="fw-caption" id="fwCaption">Happy 18th birthday for you, dear</p>
+
+            <p class="fw-note" id="fwNote">I can't meet you physically, but here are virtual hugs and kisses for you :)</p>
+
+            <button class="down-arrow" id="fwDown" aria-label="Next">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 9l7 7 7-7" />
+                </svg>
+            </button>
+
+        </section>
+
+        <!-- PAGE 4: gift 3 -> scratch card -->
+        <section class="gift-page" id="scratchPage">
+
+            <p class="eyebrow">Gift 3</p>
+
+            <h2>Scratch to reveal</h2>
+
+            <p class="gift-sub" id="scratchHint">Use your finger to scratch the card ✨</p>
+
+            <div class="scratch-card" id="scratchCard">
+
+                <div class="scratch-under" id="scratchHearts" role="button" tabindex="-1"
+                    aria-label="Two hearts wrapped together, tap them">
+
+                    <svg class="hearts-svg" viewBox="0 0 260 190" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="gHer" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0" stop-color="#ffb3cc" />
+                                <stop offset="1" stop-color="#e0457b" />
+                            </linearGradient>
+                            <linearGradient id="gHim" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0" stop-color="#9fb0ff" />
+                                <stop offset="1" stop-color="#3a47c9" />
+                            </linearGradient>
+                            <linearGradient id="gRib" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0" stop-color="#ff5a6e" />
+                                <stop offset="1" stop-color="#c4102f" />
+                            </linearGradient>
+                            <path id="scHeart"
+                                d="M0 34 C-52 -4 -38 -46 -16 -46 C-6 -46 0 -38 0 -32 C0 -38 6 -46 16 -46 C38 -46 52 -4 0 34 Z" />
+                        </defs>
+
+                        <ellipse cx="130" cy="158" rx="76" ry="6" fill="#241a58" fill-opacity="0.14" />
+
+                        <!-- her heart (pink) -->
+                        <g transform="translate(101 84) rotate(-14) scale(1.3)">
+                            <g class="h-shift h-her">
+                                <g class="h-beat">
+                                    <use href="#scHeart" fill="url(#gHer)" stroke="#b02a5c" stroke-width="1.2" />
+                                    <path d="M-30 -18 C-31 -30 -22 -36 -14 -33" fill="none" stroke="#fff"
+                                        stroke-opacity="0.75" stroke-width="3" stroke-linecap="round" />
+                                </g>
+                            </g>
+                        </g>
+
+                        <!-- my heart (blue) -->
+                        <g transform="translate(159 84) rotate(14) scale(1.3)">
+                            <g class="h-shift h-him">
+                                <g class="h-beat">
+                                    <use href="#scHeart" fill="url(#gHim)" stroke="#262fa0" stroke-width="1.2" />
+                                    <path d="M-30 -18 C-31 -30 -22 -36 -14 -33" fill="none" stroke="#fff"
+                                        stroke-opacity="0.6" stroke-width="3" stroke-linecap="round" />
+                                </g>
+                            </g>
+                        </g>
+
+                        <!-- red ribbon wrapped around both, tied with a bow -->
+                        <g class="h-beat">
+                            <path d="M40 104 Q130 144 220 104" fill="none" stroke="#b30f2d" stroke-width="12"
+                                stroke-linecap="round" />
+                            <path d="M40 101 Q130 141 220 101" fill="none" stroke="#ff7b8c" stroke-opacity="0.6"
+                                stroke-width="3" stroke-linecap="round" />
+                            <path d="M126 127 L110 156 L124 150 L131 132 Z" fill="url(#gRib)" />
+                            <path d="M134 127 L150 156 L136 150 L129 132 Z" fill="url(#gRib)" />
+                            <path d="M130 123 C102 98 86 120 112 131 C121 134 127 129 130 123 Z" fill="url(#gRib)"
+                                stroke="#9c0c26" stroke-width="0.8" />
+                            <path d="M130 123 C158 98 174 120 148 131 C139 134 133 129 130 123 Z" fill="url(#gRib)"
+                                stroke="#9c0c26" stroke-width="0.8" />
+                            <circle cx="130" cy="124" r="6.5" fill="#a30e28" />
+                            <circle cx="128" cy="122" r="2" fill="#fff" fill-opacity="0.5" />
+                        </g>
+
+                        <text x="94" y="180" class="who">You</text>
+                        <text x="166" y="180" class="who">Me</text>
+                    </svg>
+
+                    <div class="scratch-floaties" id="scratchFloaties"></div>
+
+                </div>
+
+                <canvas id="scratchCanvas" aria-label="Scratch card foil"></canvas>
+
+            </div>
+
+            <div class="days-box" id="daysBox">
+
+                <p class="days-line">We've been together for</p>
+
+                <p class="days-count"><span id="daysNum">0</span></p>
+
+                <p class="days-unit">days and counting</p>
+
+                <div class="days-forever" id="daysForever">
+
+                    <p class="days-line">Time left for us to be together</p>
+
+                    <p class="days-inf">∞</p>
+
+                    <p class="days-unit">forever</p>
+
+                </div>
+
+            </div>
+
+            <button class="down-arrow" id="scratchDown" aria-label="Next">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 9l7 7 7-7" />
+                </svg>
+            </button>
+
+        </section>
+
+        <!-- PAGE 5: how we started (song + floating photos + your text) -->
+        <section class="gift-page memory-page" id="memoryPage">
+
+            <audio id="bgSong" loop preload="none"></audio>
+
+            <button class="sound-btn" id="soundBtn" aria-label="Turn music off">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" aria-hidden="true">
+                    <path d="M11 5L6 9H3v6h3l5 4V5z" />
+                    <g class="sound-waves">
+                        <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+                        <path d="M18.5 5.5a9 9 0 0 1 0 13" />
+                    </g>
+                    <path class="sound-slash" d="M16 9l5 6M21 9l-5 6" />
+                </svg>
+            </button>
+
+            <div class="memory-hearts" aria-hidden="true">
+                <span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span>
+            </div>
+
+            <div class="memory-sky" id="memorySky"></div>
+
+            <div class="memory-letter" id="memoryLetter" aria-live="polite">
+                <div class="letter-inner" id="letterInner"></div>
+            </div>
+
+            <div class="final-msg" id="finalMsg">
+                <div class="letter-inner" id="finalInner"></div>
+            </div>
+
+            <div class="memory-text">
+                <p class="memory-line" id="memoryLine"></p>
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
