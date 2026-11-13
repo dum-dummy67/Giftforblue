@@ -2318,7 +2318,7 @@ const MEMORY_CHAPTERS = [
 
 ];
 
-const MEMORY_FOLDER = "photos/";
+const MEMORY_FOLDER = "";
 
 
 const memoryPageEl = document.getElementById("memoryPage");
